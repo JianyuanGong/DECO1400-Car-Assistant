@@ -14,3 +14,30 @@
 
 ## Q5: What is the most valuable thing you've learned so far?
 **Answer:** "The most valuable lesson is that design must be **justifiable**. [cite_start]Learning **Heuristic Evaluation** [cite: 1626] taught me that every UI element—like a hover effect or a sidebar—should serve a functional purpose, such as providing feedback or reducing memory load, rather than just being 'pretty'."
+
+# Review 1 面试脚本 (中英对照)
+
+## Q1: 设计初衷 (Design Justification)
+- **EN:** "I implemented a persistent sidebar for **Visibility of System Status**."
+- **CN:** “我实现了一个持久的侧边栏，以满足**系统状态可见性**。”
+- **Key:** Visibility of System Status, Persistent sidebar.
+
+## Q2: 原型演变 (Prototype Iteration)
+- **EN:** "Lo-fi showed too much **Cognitive Load**. Hi-fi uses **Minimalist Design** for better **Visual Hierarchy**."
+- **CN:** “低保真原型显示**认知负荷**过重。高保真采用**极简设计**来建立更好的**视觉层级**。”
+- **Key:** Cognitive Load, Visual Hierarchy, Minimalist Design.
+
+## Q3: 技术实现 (Technical Plan)
+- **EN:** "Using **CSS Grid** for layout and **Flexbox** for alignment, with **semantic HTML tags**."
+- **CN:** “使用 **CSS Grid** 进行布局，**Flexbox** 进行对齐，并使用**语义化 HTML 标签**。”
+- **Key:** CSS Grid, Flexbox, Semantic tags.
+
+## Q4: 改进方案 (Future Improvements)
+- **EN:** "Plan to use **JavaScript** to turn static data into a dynamic calculator for better **System Feedback**."
+- **CN:** “计划使用 **JavaScript** 将静态数据转为动态计算器，以获得更好的**系统反馈**。”
+- **Key:** JavaScript DOM, Dynamic calculator, System feedback.
+
+## Q5: 核心收获 (Most Valuable Learning)
+- **EN:** "Every UI element must be **justifiable** and serve a functional purpose."
+- **CN:** “每一个 UI 元素都必须是**有理有据的**，并且服务于功能性目的。”
+- **Key:** Justifiable, Heuristic Evaluation, Functional purpose.
