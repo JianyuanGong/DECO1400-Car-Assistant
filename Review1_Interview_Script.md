@@ -41,3 +41,26 @@
 - **EN:** "Every UI element must be **justifiable** and serve a functional purpose."
 - **CN:** “每一个 UI 元素都必须是**有理有据的**，并且服务于功能性目的。”
 - **Key:** Justifiable, Heuristic Evaluation, Functional purpose.
+
+- # DECO1400 Review 1: Quick Presentation Script
+
+## 1. Nielsen's Heuristics (尼尔森原则)
+[cite_start]For the design principles, I focused on the **Visibility of System Status** by using a fixed sidebar so users never get lost[cite: 217, 218]. [cite_start]I also used simple terms like 'Budget' instead of complex car jargon to ensure a **Match between the system and the real world**[cite: 221, 222].
+
+## 2. Low-Fidelity to High-Fidelity (低保真到高保真)
+[cite_start]Moving from the low-fidelity to the high-fidelity prototype, my main goal was **Minimalist Design**[cite: 227, 228]. The early sketches had too much information. So, I removed the useless clutter and used color blocks to reduce the user's **Cognitive Load** (认知负荷) and create a clear visual hierarchy.
+
+## 3. Code Implementation Plan (代码计划)
+[cite_start]For my code plan, I will use **semantic HTML5 tags** for the basic structure[cite: 413]. [cite_start]For the layout, I will use **CSS Grid** for the main page and **Flexbox** to align the sidebar[cite: 413]. [cite_start]Finally, I will use **JavaScript** to build the interactive "Match Score" calculator[cite: 268, 413].
+
+## 1. 尼尔森原则
+
+[cite_start]在设计原则方面，我着重强调**系统状态的可见性**，通过使用固定侧边栏，确保用户不会迷失方向[cite: 217, 218]。[cite_start]我还使用了“预算”等简单术语，而非复杂的汽车专业术语，以确保**系统与现实世界的契合度**[cite: 221, 222]。
+
+## 2. 从低保真到高保真
+
+[cite_start]从低保真原型到高保真原型，我的主要目标是**极简设计**[cite: 227, 228]。早期的草图信息过多，因此我移除了无用的元素，并使用色块来降低用户的**认知负荷**，并创建清晰的视觉层级。
+
+## 3. 代码实现计划
+
+[cite_start]我的代码计划将使用**语义化的HTML5标签**来构建基本结构[cite: 413]。[cite_start]在布局方面，我将使用**CSS Grid**来构建主页，并使用**Flexbox**来对齐侧边栏[cite: 413]。[cite_start]最后，我将使用**JavaScript**来构建交互式的“比赛得分”计算器[cite: 268, 413]。
