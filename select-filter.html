@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Assistant Platform</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -26,7 +26,20 @@
 
         <section class="intro-section">
             <h2>Step 1: Set Your Filters</h2>
-            <p>We will build dropdowns for Price, Brand, and Energy Type soon.</p>
+            <p>Select your vehicle type, usage habits, and budget to get a personalized recommendation.</p>
+
+        <label for="type">Vehicle Type:</label>
+        <select id="type">
+            <option value="ev">Electric</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="fuel">Fuel</option>
+        </select>
+
+        <br><br>
+
+        <button onclick="recommendCar()">Find My Car</button>
+
+        <p id="result"></p>
         </section>
     </main>
 
@@ -34,5 +47,6 @@
         <p>&copy; 2026 Car Assistant Platform. All rights reserved.</p>
     </footer>
 
+<script src="js/script.js"></script>
 </body>
 </html>
