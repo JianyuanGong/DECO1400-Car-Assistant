@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Assistant Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Auto Guide</h2>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="Overview.html" class="active">Overview</a></li>
+            <li><a href="select-filter.html" class="active">Find a Car</a></li>
+            <li><a href="select-result.html" class="active">View Results</a></li>
+            <li><a href="maintenance.html" class="active">Maintenance</a></li>
+            <li><a href="support.html" class="active">Support</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+
+        <h1>Your Recommended Car</h1>
+
+        <div class="result-card">
+            <p id="result"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Car Assistant Platform. All rights reserved.</p>
+    </footer>
+
+<script>
+    let result = localStorage.getItem("result");
+    document.getElementById("result").innerText = result;
+</script>
+</body>
+</html>
