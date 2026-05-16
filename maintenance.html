@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Assistant Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ===== Maintenance Page Spacing Only ===== */
+.maintenance-page .card {
+    margin-bottom: 18px;
+}
+
+.maintenance-page h2 {
+    margin-bottom: 10px;
+}
+
+.maintenance-page label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+.maintenance-page input {
+    margin-bottom: 10px !important;
+}
+
+.maintenance-page button {
+    margin-top: 10px;
+}
+
+.maintenance-page #records div {
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-top-icon" onclick="toggleSidebar()">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+            <h2 class="logo consistent-logo">AutoGuide</h2>
+        </div>
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house icon"></i>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="overview.html">
+                    <i class="fa-solid fa-chart-column icon"></i>
+                    <span class="text">Overview</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-input.html">
+                    <i class="fa-solid fa-pen icon"></i>
+                    <span class="text">Select Input</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-filter.html">
+                    <i class="fa-solid fa-magnifying-glass icon"></i>
+                    <span class="text">Find a Car</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-result.html">
+                    <i class="fa-solid fa-car icon"></i>
+                    <span class="text">View Results</span>
+                </a>
+            </li>
+            <li>
+                <a href="maintenance.html" class="active">
+                    <i class="fa-solid fa-screwdriver-wrench icon"></i>
+                    <span class="text">Maintenance</span>
+                </a>
+            </li>
+            <li>
+                <a href="support.html">
+                    <i class="fa-solid fa-comments icon"></i>
+                    <span class="text">Support</span>
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="fa-solid fa-circle-info icon"></i>
+                    <span class="text">About Us</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content maintenance-page">
+        <header>
+            <h1>Car Maintenance Guide</h1>
+            <p>Learn how to maintain your vehicle for better performance and longer lifespan.</p>
+        </header>
+
+        <section class="intro-section">
+    <div class="card">
+        <h2>Vehicle Info</h2>
+        <label>Car Model:</label>
+        <input id="carModel" type="text" placeholder="e.g., Tesla Model 3" style="width:100%; padding:8px; margin:6px 0 10px;">
+
+        <label>Purchase Date:</label>
+        <input id="purchaseDate" type="date" style="width:100%; padding:8px; margin:6px 0 10px;">
+
+        <label>Current Mileage (km):</label>
+        <input id="mileage" type="number" placeholder="e.g., 12000" style="width:100%; padding:8px; margin:6px 0 10px;">
+    </div>
+
+    <div class="card">
+        <h2>Service Records</h2>
+        <div id="records"></div>
+        <button onclick="addRecord()" class="primary-btn" style="margin-top:10px;">+ Add Service Record</button>
+    </div>
+
+    <div class="card">
+        <h2>Next Service Recommendation</h2>
+        <p id="nextService">Based on typical schedule: every ~6 months.</p>
+    </div>
+
+    <div class="card">
+        <button onclick="saveData()" class="primary-btn">Save Record</button>
+        <button onclick="clearData()" style="margin-left:10px;">Clear</button>
+    </div>
+
+    <div class="card">
+        <h2>Your Records</h2>
+        <div id="output"></div>
+
+        <h3 style="margin-top:15px;">Official Link</h3>
+        <a id="officialLink" href="#" target="_blank">View Maintenance Guide</a>
+    </div>
+        </section>
+    </main>
+
+
+</body>
+<script>
+let count = 0;
+
+function addRecord(dateVal="") {
+    count++;
+    const container = document.getElementById("records");
+    const div = document.createElement("div");
+    div.innerHTML = `
+        <label>Service #${count}</label>
+        <input type="date" value="${dateVal}" style="width:100%; padding:8px; margin:6px 0 10px;">
+    `;
+    container.appendChild(div);
+}
+
+function saveData() {
+    const model = document.getElementById("carModel").value;
+    const purchase = document.getElementById("purchaseDate").value;
+    const mileage = document.getElementById("mileage").value;
+
+    const dates = Array.from(document.querySelectorAll("#records input")).map(i => i.value);
+
+    const data = { model, purchase, mileage, dates };
+    localStorage.setItem("maintenanceData", JSON.stringify(data));
+
+    renderOutput(data);
+}
+
+function clearData() {
+    localStorage.removeItem("maintenanceData");
+    document.getElementById("records").innerHTML = "";
+    document.getElementById("output").innerHTML = "";
+    document.getElementById("carModel").value = "";
+    document.getElementById("purchaseDate").value = "";
+    document.getElementById("mileage").value = "";
+    count = 0;
+
+    // Reset official link
+    const linkElement = document.getElementById("officialLink");
+    linkElement.href = "#";
+    linkElement.innerText = "Fill all fields to unlock guide";
+    linkElement.style.pointerEvents = "none";
+    linkElement.style.opacity = "0.5";
+}
+
+function updateLinkState() {
+    const modelInput = document.getElementById("carModel").value.trim().toLowerCase();
+    const purchase = document.getElementById("purchaseDate").value;
+    const mileage = document.getElementById("mileage").value;
+
+    let link = "#";
+
+    if (modelInput.includes("tesla")) {
+        link = "https://www.tesla.com/support";
+    } else if (modelInput.includes("toyota")) {
+        link = "https://www.toyota.com/owners/";
+    } else if (modelInput.includes("bmw")) {
+        link = "https://www.bmw.com/en/automotive-life/bmw-service.html";
+    } else if (modelInput.includes("mercedes") || modelInput.includes("benz")) {
+        link = "https://www.mercedes-benz.com.au/passengercars/services/maintenance.html";
+    } else if (modelInput.includes("byd")) {
+        link = "https://evdealergroup-byd.com.au/service-and-warranty";
+    }
+
+    const linkElement = document.getElementById("officialLink");
+
+    // Only enable if all required fields are filled AND brand recognized
+    if (modelInput && purchase && mileage && link !== "#") {
+        linkElement.href = link;
+        linkElement.innerText = "View Maintenance Guide";
+        linkElement.style.pointerEvents = "auto";
+        linkElement.style.opacity = "1";
+    } else {
+        linkElement.href = "#";
+        linkElement.innerText = "Fill all fields to unlock guide";
+        linkElement.style.pointerEvents = "none";
+        linkElement.style.opacity = "0.5";
+    }
+}
+
+function renderOutput(data) {
+    let html = `<p><strong>Car:</strong> ${data.model}</p>`;
+    html += `<p><strong>Purchase:</strong> ${data.purchase}</p>`;
+    html += `<p><strong>Mileage:</strong> ${data.mileage} km</p>`;
+    html += `<p><strong>Services:</strong></p>`;
+
+    data.dates.forEach((d,i)=>{
+        if(d) html += `<p>Service #${i+1}: ${d}</p>`;
+    });
+
+    document.getElementById("output").innerHTML = html;
+
+    // Set official link based on car model
+    let link = "#";
+    const model = data.model.toLowerCase();
+
+    if (model.includes("tesla")) {
+        link = "https://www.tesla.com/support";
+    } else if (model.includes("toyota")) {
+        link = "https://www.toyota.com/owners/";
+    } else if (model.includes("bmw")) {
+        link = "https://www.bmw.com/en/automotive-life/bmw-service.html";
+    } else if (model.includes("mercedes") || model.includes("benz")) {
+        link = "https://www.mercedes-benz.com.au/passengercars/services/maintenance.html";
+    } else if (model.includes("byd")) {
+        link = "https://evdealergroup-byd.com.au/service-and-warranty";
+    }
+
+    const linkElement = document.getElementById("officialLink");
+
+    // Only enable link if a valid model exists
+    if (data.model && link !== "#") {
+        linkElement.href = link;
+        linkElement.innerText = "View Maintenance Guide";
+    } else {
+        linkElement.href = "#";
+        linkElement.innerText = "No official guide available for this vehicle";
+    }
+}
+
+document.addEventListener("input", updateLinkState);
+
+window.onload = function() {
+    const sidebar = document.querySelector(".sidebar");
+    const body = document.body;
+    const savedState = localStorage.getItem("sidebarState");
+
+    if (savedState === "collapsed") {
+        sidebar.classList.add("collapsed");
+        body.classList.add("sidebar-collapsed");
+    }
+
+    const saved = localStorage.getItem("maintenanceData");
+    if (saved) {
+        const data = JSON.parse(saved);
+        document.getElementById("carModel").value = data.model || "";
+        document.getElementById("purchaseDate").value = data.purchase || "";
+        document.getElementById("mileage").value = data.mileage || "";
+
+        data.dates.forEach(d => addRecord(d));
+        renderOutput(data);
+    } else {
+        addRecord();
+    }
+    updateLinkState();
+};
+
+function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    const body = document.body;
+
+    sidebar.classList.toggle("collapsed");
+    body.classList.toggle("sidebar-collapsed");
+
+    if (sidebar.classList.contains("collapsed")) {
+        localStorage.setItem("sidebarState", "collapsed");
+    } else {
+        localStorage.setItem("sidebarState", "expanded");
+    }
+}
+</script>
+</html>

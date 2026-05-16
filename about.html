@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Assistant Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -19,7 +18,7 @@
         </div>
         <ul>
             <li>
-                <a href="index.html" class="active">
+                <a href="index.html">
                     <i class="fa-solid fa-house icon"></i>
                     <span class="text">Home</span>
                 </a>
@@ -61,7 +60,7 @@
                 </a>
             </li>
             <li>
-                <a href="about.html">
+                <a href="about.html" class="active">
                     <i class="fa-solid fa-circle-info icon"></i>
                     <span class="text">About Us</span>
                 </a>
@@ -70,44 +69,18 @@
     </nav>
 
     <main class="main-content">
-        <header class="hero">
-            <h1>Find Your Perfect Car</h1>
-            <p>Smart recommendations powered by your lifestyle, budget, and driving habits.</p>
+        <header>
+            <h1>About Us</h1>
+            <p>Learn more information about our company.</p>
         </header>
 
-        <section class="cta-section">
-            <h2>Start Your Journey</h2>
-            <p>Compare electric, hybrid, and fuel vehicles in seconds.</p>
-            <button class="primary-btn" onclick="window.location.href='select-input.html'">
-                Get Started →
-            </button>
-        </section>
-
-        <section class="preview-section">
-            <h2>Popular Choices</h2>
-            <div class="car-cards">
-                <div class="car-card">
-                    <h3>Tesla Model 3</h3>
-                    <p>Electric • High Efficiency</p>
-                    <span>Match: 92%</span>
-                </div>
-                <div class="car-card">
-                    <h3>Toyota Prius</h3>
-                    <p>Hybrid • Reliable</p>
-                    <span>Match: 88%</span>
-                </div>
-                <div class="car-card">
-                    <h3>BYD Seal</h3>
-                    <p>Electric • Affordable</p>
-                    <span>Match: 90%</span>
-                </div>
-            </div>
-        </section>
-        <section class="cover-section">
-            <h2>Explore Modern Driving</h2>
-            <p>Experience the future of mobility through innovation, efficiency, and intelligent design.</p>
-            <!-- Replace the src below with your own image link -->
-            <img src="images/Front Cover.png" alt="Car Cover Image" class="cover-image">
+        <section class="intro-section">
+            <h2>Website Purpose</h2>
+            <p>Our website aims to help users make informed decisions when selecting and maintaining vehicles.</p>
+            
+            <h2>Contact Information</h2>
+            <p>Email: support@carassistant.com</p>
+            <p>Phone: +61 0406 123 456</p>
         </section>
     </main>
 
@@ -115,15 +88,15 @@
         <p>&copy; 2026 Car Assistant Platform. All rights reserved.</p>
     </footer>
 
+</body>
 <script>
 function toggleSidebar() {
     const sidebar = document.querySelector(".sidebar");
     const body = document.body;
 
     sidebar.classList.toggle("collapsed");
-    body.classList.toggle("sidebar-collapsed"); 
+    body.classList.toggle("sidebar-collapsed");
 
-    // Save state
     if (sidebar.classList.contains("collapsed")) {
         localStorage.setItem("sidebarState", "collapsed");
     } else {
@@ -131,7 +104,6 @@ function toggleSidebar() {
     }
 }
 
-// Load saved state on page load
 window.onload = function() {
     const sidebar = document.querySelector(".sidebar");
     const body = document.body;
@@ -139,10 +111,8 @@ window.onload = function() {
 
     if (savedState === "collapsed") {
         sidebar.classList.add("collapsed");
-        body.classList.add("sidebar-collapsed"); 
+        body.classList.add("sidebar-collapsed");
     }
 };
 </script>
-
-</body>
 </html>

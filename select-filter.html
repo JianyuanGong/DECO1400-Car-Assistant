@@ -3,50 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Assistant Platform</title>
+    <title>Find a Car</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
     <nav class="sidebar">
-        <h2>Auto Guide</h2>
+        <div class="sidebar-header">
+            <div class="sidebar-top-icon" onclick="toggleSidebar()">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+            <h2 class="logo consistent-logo">AutoGuide</h2>
+        </div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="select-filter.html">Find a Car</a></li>
-            <li><a href="maintenance.html">Maintenance</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house icon"></i>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="overview.html">
+                    <i class="fa-solid fa-chart-column icon"></i>
+                    <span class="text">Overview</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-input.html">
+                    <i class="fa-solid fa-pen icon"></i>
+                    <span class="text">Select Input</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-filter.html" class="active">
+                    <i class="fa-solid fa-magnifying-glass icon"></i>
+                    <span class="text">Find a Car</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-result.html">
+                    <i class="fa-solid fa-car icon"></i>
+                    <span class="text">View Results</span>
+                </a>
+            </li>
+            <li>
+                <a href="maintenance.html">
+                    <i class="fa-solid fa-screwdriver-wrench icon"></i>
+                    <span class="text">Maintenance</span>
+                </a>
+            </li>
+            <li>
+                <a href="support.html">
+                    <i class="fa-solid fa-comments icon"></i>
+                    <span class="text">Support</span>
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="fa-solid fa-circle-info icon"></i>
+                    <span class="text">About Us</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
-        <main class="main-content">
-        <header>
-            <h1>Find Your Perfect Car</h1>
-            <p>Use the filters below to match your budget and preferences.</p>
-        </header>
+    <main class="main-content">
+        <h1>Find Your Perfect Car</h1>
 
         <section class="intro-section">
-            <h2>Step 1: Set Your Filters</h2>
-            <p>Select your vehicle type, usage habits, and budget to get a personalized recommendation.</p>
+            <h2>Step 1: Your Driving Profile</h2>
+            <p>Tell us about your driving habits, and we’ll recommend the best car for you.</p>
 
-        <label for="type">Vehicle Type:</label>
-        <select id="type">
-            <option value="ev">Electric</option>
-            <option value="hybrid">Hybrid</option>
-            <option value="fuel">Fuel</option>
-        </select>
+            <label>How do you usually use your car?</label>
+            <select id="usage">
+                <option value="">-- Select --</option>
+                <option value="Daily commute">Daily commute</option>
+                <option value="Weekend use">Weekend use</option>
+                <option value="Occasional">Occasional</option>
+            </select>
 
-        <br><br>
+            <br><br>
 
-        <button onclick="recommendCar()">Find My Car</button>
+            <label>How often do you drive?</label>
+            <select id="frequency">
+                <option value="">-- Select --</option>
+                <option value="Rarely">Rarely</option>
+                <option value="Regularly">Regularly</option>
+                <option value="Frequently">Frequently</option>
+            </select>
 
-        <p id="result"></p>
+            <br><br>
+
+            <label>Do you need a car for work?</label>
+            <select id="commute">
+                <option value="">-- Select --</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <br><br>
+
+            <label>Budget Range:</label>
+            <select id="budget">
+                <option value="">-- Select --</option>
+                <option value="Under $30k">Under $30k</option>
+                <option value="$30k - $60k">$30k - $60k</option>
+                <option value="Above $60k">Above $60k</option>
+            </select>
+
+            <br><br>
+
+            <label>Driving Purpose:</label>
+            <select id="purpose">
+                <option value="">-- Select --</option>
+                <option value="Daily">Daily</option>
+                <option value="Family">Family</option>
+                <option value="Sport">Sport</option>
+            </select>
+
+            <br><br>
+
+            <button class="primary-btn" onclick="validateAndGo()">Find My Car →</button><button onclick="clearSelections()" style="margin-left:10px;">Clear</button>
+
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Car Assistant Platform. All rights reserved.</p>
-    </footer>
+<script>
+function recommendCar() {
+    const usage = document.getElementById("usage").value;
+    const frequency = document.getElementById("frequency").value;
+    const commute = document.getElementById("commute").value;
+    const budget = document.getElementById("budget").value;
+    const purpose = document.getElementById("purpose").value;
 
-<script src="js/script.js"></script>
+    if (!usage || !frequency || !commute || !budget || !purpose) {
+        return;
+    }
+
+    let result = "";
+
+    if (usage === "Daily commute" && budget === "Above $60k") {
+        result = "Recommended: Tesla Model 3 (Electric, high efficiency)";
+    } else if (usage === "Weekend use") {
+        result = "Recommended: Toyota Prius (Hybrid, balanced choice)";
+    } else {
+        result = "Recommended: Mazda 3 (Fuel, reliable daily use)";
+    }
+}
+
+function validateAndGo() {
+    const usage = document.getElementById("usage").value;
+    const frequency = document.getElementById("frequency").value;
+    const commute = document.getElementById("commute").value;
+    const budget = document.getElementById("budget").value;
+    const purpose = document.getElementById("purpose").value;
+
+    if (!usage || !frequency || !commute || !budget || !purpose) {
+        alert("Please complete all selections.");
+        return;
+    }
+
+    // 💾 Save selections
+    localStorage.setItem("usage", usage);
+    localStorage.setItem("frequency", frequency);
+    localStorage.setItem("commute", commute);
+    localStorage.setItem("budget", budget);
+    localStorage.setItem("purpose", purpose);
+
+    // 🔓 Unlock next step
+    localStorage.setItem("filterDone", "true");
+
+    window.location.href = "select-result.html";
+}
+
+function clearSelections() {
+    const fields = ["usage", "frequency", "commute", "budget", "purpose"];
+
+    fields.forEach(id => {
+        localStorage.removeItem(id);
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+    });
+
+    localStorage.removeItem("filterDone");
+}
+
+/* === Sidebar Sync Logic === */
+function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    const body = document.body;
+
+    sidebar.classList.toggle("collapsed");
+    body.classList.toggle("sidebar-collapsed");
+
+    if (sidebar.classList.contains("collapsed")) {
+        localStorage.setItem("sidebarState", "collapsed");
+    } else {
+        localStorage.setItem("sidebarState", "expanded");
+    }
+}
+
+window.onload = function() {
+    // 🔒 Lock: if user did not complete input step
+    if (localStorage.getItem("inputDone") !== "true") {
+        alert("Please complete the previous step first.");
+        window.location.href = "select-input.html";
+        return;
+    }
+
+    // 🔁 Restore sidebar state
+    const sidebar = document.querySelector(".sidebar");
+    const body = document.body;
+    const savedState = localStorage.getItem("sidebarState");
+
+    if (savedState === "collapsed") {
+        sidebar.classList.add("collapsed");
+        body.classList.add("sidebar-collapsed");
+    }
+
+    // 🔁 Restore saved selections
+    const fields = ["usage", "frequency", "commute", "budget", "purpose"];
+
+    fields.forEach(id => {
+        const saved = localStorage.getItem(id);
+        const el = document.getElementById(id);
+
+        const isValid = [...el.options].some(opt => opt.value === saved);
+
+        if (!saved || !isValid) {
+            el.selectedIndex = 0;
+        } else {
+            el.value = saved;
+        }
+    });
+};
+</script>
+
 </body>
 </html>

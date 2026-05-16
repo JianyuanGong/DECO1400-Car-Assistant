@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Selection - Input Preference</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-top-icon" onclick="toggleSidebar()">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+            <h2 class="logo consistent-logo">AutoGuide</h2>
+        </div>
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house icon"></i>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="overview.html">
+                    <i class="fa-solid fa-chart-column icon"></i>
+                    <span class="text">Overview</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-input.html" class="active">
+                    <i class="fa-solid fa-pen icon"></i>
+                    <span class="text">Select Input</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-filter.html">
+                    <i class="fa-solid fa-magnifying-glass icon"></i>
+                    <span class="text">Find a Car</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-result.html">
+                    <i class="fa-solid fa-car icon"></i>
+                    <span class="text">View Results</span>
+                </a>
+            </li>
+            <li>
+                <a href="maintenance.html">
+                    <i class="fa-solid fa-screwdriver-wrench icon"></i>
+                    <span class="text">Maintenance</span>
+                </a>
+            </li>
+            <li>
+                <a href="support.html">
+                    <i class="fa-solid fa-comments icon"></i>
+                    <span class="text">Support</span>
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="fa-solid fa-circle-info icon"></i>
+                    <span class="text">About Us</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header>
+            <h1>Car Selection</h1>
+            <p>Step 1: Enter your preferences to find the most suitable vehicle.</p>
+        </header>
+
+        <section class="intro-section">
+            <h2>Input Preferences</h2>
+
+            <label for="type">Vehicle Type:</label>
+            <select id="type">
+                <option value="">-- Select Type --</option>
+                <option value="ev">Electric</option>
+                <option value="hybrid">Hybrid</option>
+                <option value="fuel">Fuel</option>
+            </select>
+
+            <br><br>
+
+            <label for="usage">Usage Frequency:</label>
+            <select id="usage">
+                <option value="">-- Select Usage --</option>
+                <option value="low">Occasional</option>
+                <option value="medium">Regular</option>
+                <option value="high">Frequent</option>
+            </select>
+
+            <br><br>
+
+            <label for="budget">Budget Range:</label>
+            <select id="budget">
+                <option value="">-- Select Budget --</option>
+                <option value="low">Under $30,000</option>
+                <option value="mid">$30,000 - $60,000</option>
+                <option value="high">Above $60,000</option>
+            </select>
+
+            <br><br>
+
+            <label for="purpose">Driving Purpose:</label>
+            <select id="purpose">
+                <option value="">-- Select Purpose --</option>
+                <option value="daily">Daily Commute</option>
+                <option value="family">Family Use</option>
+                <option value="sport">Sport Driving</option>
+            </select>
+
+            <br><br>
+
+            <button onclick="validateAndProceed()">Next: Filter Options</button>
+            <button onclick="clearSelections()" style="margin-left:10px;">Clear</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Car Assistant Platform. All rights reserved.</p>
+    </footer>
+
+<script>
+// Restore previous selections (if user comes back)
+window.onload = function() {
+    const sidebar = document.querySelector(".sidebar");
+    const body = document.body;
+    const savedState = localStorage.getItem("sidebarState");
+
+    if (savedState === "collapsed") {
+        sidebar.classList.add("collapsed");
+        body.classList.add("sidebar-collapsed");
+    }
+
+    const type = localStorage.getItem("type");
+    const usage = localStorage.getItem("usage");
+    const budget = localStorage.getItem("budget");
+    const purpose = localStorage.getItem("purpose");
+
+    if (type) document.getElementById("type").value = type;
+    if (usage) document.getElementById("usage").value = usage;
+    if (budget) document.getElementById("budget").value = budget;
+    if (purpose) document.getElementById("purpose").value = purpose;
+};
+
+/* 🔄 Auto-save on change */
+document.querySelectorAll("select").forEach(select => {
+    select.addEventListener("change", function() {
+        localStorage.setItem(this.id, this.value);
+    });
+});
+
+function validateAndProceed() {
+    const type = document.getElementById("type").value;
+    const usage = document.getElementById("usage").value;
+    const budget = document.getElementById("budget").value;
+    const purpose = document.getElementById("purpose").value;
+
+    if (!type || !usage || !budget || !purpose) {
+        alert("Please select all options before proceeding.");
+        return;
+    }
+
+    // Save selections
+    localStorage.setItem("type", type);
+    localStorage.setItem("usage", usage);
+    localStorage.setItem("budget", budget);
+    localStorage.setItem("purpose", purpose);
+
+    // Mark this step completed
+    localStorage.setItem("inputDone", "true");
+
+    window.location.href = "select-filter.html";
+}
+
+function clearSelections() {
+    localStorage.removeItem("type");
+    localStorage.removeItem("usage");
+    localStorage.removeItem("budget");
+    localStorage.removeItem("purpose");
+    localStorage.removeItem("inputDone");
+
+    // reset UI
+    document.getElementById("type").value = "";
+    document.getElementById("usage").value = "";
+    document.getElementById("budget").value = "";
+    document.getElementById("purpose").value = "";
+}
+
+function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    const body = document.body;
+
+    sidebar.classList.toggle("collapsed");
+    body.classList.toggle("sidebar-collapsed");
+
+    if (sidebar.classList.contains("collapsed")) {
+        localStorage.setItem("sidebarState", "collapsed");
+    } else {
+        localStorage.setItem("sidebarState", "expanded");
+    }
+}
+</script>
+</body>
+</html>

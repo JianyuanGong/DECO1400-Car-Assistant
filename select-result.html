@@ -3,18 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Assistant Platform</title>
+    <title>Car Recommendation Result</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+    .rec-card {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .rec-title {
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .rec-score {
+        color: #3498db;
+        font-weight: 600;
+        margin-top: 5px;
+    }
+    </style>
 </head>
 <body>
 
     <nav class="sidebar">
-        <h2>Auto Guide</h2>
+        <div class="sidebar-header">
+            <div class="sidebar-top-icon" onclick="toggleSidebar()">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+            <h2 class="logo consistent-logo">AutoGuide</h2>
+        </div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="select-filter.html">Find a Car</a></li>
-            <li><a href="maintenance.html">Maintenance</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house icon"></i>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="overview.html">
+                    <i class="fa-solid fa-chart-column icon"></i>
+                    <span class="text">Overview</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-input.html">
+                    <i class="fa-solid fa-pen icon"></i>
+                    <span class="text">Select Input</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-filter.html">
+                    <i class="fa-solid fa-magnifying-glass icon"></i>
+                    <span class="text">Find a Car</span>
+                </a>
+            </li>
+            <li>
+                <a href="select-result.html" class="active">
+                    <i class="fa-solid fa-car icon"></i>
+                    <span class="text">View Results</span>
+                </a>
+            </li>
+            <li>
+                <a href="maintenance.html">
+                    <i class="fa-solid fa-screwdriver-wrench icon"></i>
+                    <span class="text">Maintenance</span>
+                </a>
+            </li>
+            <li>
+                <a href="support.html">
+                    <i class="fa-solid fa-comments icon"></i>
+                    <span class="text">Support</span>
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="fa-solid fa-circle-info icon"></i>
+                    <span class="text">About Us</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -22,8 +90,12 @@
 
         <h1>Your Recommended Car</h1>
 
-        <div class="result-card">
-            <p id="result"></p>
+        <div class="result-card" style="padding:20px; border:1px solid #ccc; border-radius:10px; font-size:18px;">
+            <h2>Top 3 Recommendations</h2>
+
+            <div id="card1" class="rec-card"></div>
+            <div id="card2" class="rec-card"></div>
+            <div id="card3" class="rec-card"></div>
         </div>
     </main>
 
@@ -32,8 +104,112 @@
     </footer>
 
 <script>
-    let result = localStorage.getItem("result");
-    document.getElementById("result").innerText = result;
+    // 🔒 Lock: prevent direct access
+    if (localStorage.getItem("filterDone") !== "true") {
+        alert("Please complete previous steps first.");
+        window.location.href = "select-filter.html";
+    }
+
+    // Get user profile from previous page
+    let usage = localStorage.getItem("usage");
+    let frequency = localStorage.getItem("frequency");
+    let commute = localStorage.getItem("commute");
+    let budget = localStorage.getItem("budget");
+    let purpose = localStorage.getItem("purpose");
+
+    // Basic fallback (if not stored yet)
+    if (!usage) usage = "Daily commute";
+    if (!budget) budget = "Under $30k";
+
+    // Generate 3 recommendations (simple logic)
+    let recommendations = [];
+
+    if (usage === "Daily commute" && budget === "Above $60k") {
+        recommendations = [
+            {name: "Tesla Model 3", score: 92, reason: "Strong match for daily commuting with excellent efficiency and premium features. Ideal if you want a smooth and high-tech driving experience.",
+                link: "https://www.tesla.com/model3"
+            },
+            {name: "Tesla Model Y", score: 88, reason: "Offers more space and comfort while still maintaining electric efficiency. Great for both commuting and lifestyle flexibility.",
+                link: "https://www.tesla.com/modely"
+            },
+            {name: "Hyundai Ioniq 5", score: 84, reason: "A modern electric vehicle with strong performance and unique design, suitable for urban and mixed driving.",
+                link: "https://www.hyundai.com/worldwide/en/eco/ioniq5"
+            }
+        ];
+    } else if (usage === "Weekend use") {
+        recommendations = [
+            {name: "Toyota Prius", score: 90, reason: "Very balanced hybrid option with excellent fuel efficiency, perfect for occasional driving.",
+                link: "https://www.toyota.com.au/prius"
+            },
+            {name: "Mazda 3", score: 85, reason: "Reliable and affordable choice, good for light usage and enjoyable driving.",
+                link: "https://www.mazda.com.au/cars/mazda3"
+            },
+            {name: "Toyota Camry Hybrid", score: 82, reason: "Comfortable and efficient, suitable for relaxed weekend trips.",
+                link: "https://www.toyota.com.au/camry"
+            }
+        ];
+    } else {
+        recommendations = [
+            {name: "Mazda 3", score: 88, reason: "A safe and reliable daily option with low cost and solid performance.",
+                link: "https://www.mazda.com.au/cars/mazda3"
+            },
+            {name: "Toyota RAV4 Hybrid", score: 85, reason: "More space and flexibility, suitable for mixed daily and family use.",
+                link: "https://www.toyota.com.au/rav4"
+            },
+            {name: "BMW M340i", score: 80, reason: "If you prefer performance and driving enjoyment, this offers a sporty experience.",
+                link: "https://www.bmw.com/en/all-models/3-series/sedan/2022/bmw-3-series-sedan-overview.html"
+            }
+        ];
+    }
+
+    // Render results
+    document.getElementById("card1").innerHTML = `
+        <div class="rec-title">${recommendations[0].name}</div>
+        <div class="rec-score">Match Score: ${recommendations[0].score}%</div>
+        <p>${recommendations[0].reason}</p>
+        <a href="${recommendations[0].link}" target="_blank" class="btn">Official Website</a>
+    `;
+
+    document.getElementById("card2").innerHTML = `
+        <div class="rec-title">${recommendations[1].name}</div>
+        <div class="rec-score">Match Score: ${recommendations[1].score}%</div>
+        <p>${recommendations[1].reason}</p>
+        <a href="${recommendations[1].link}" target="_blank" class="btn">Official Website</a>
+    `;
+
+    document.getElementById("card3").innerHTML = `
+        <div class="rec-title">${recommendations[2].name}</div>
+        <div class="rec-score">Match Score: ${recommendations[2].score}%</div>
+        <p>${recommendations[2].reason}</p>
+        <a href="${recommendations[2].link}" target="_blank" class="btn">Official Website</a>
+    `;
+</script>
+<script>
+function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    const body = document.body;
+
+    sidebar.classList.toggle("collapsed");
+    body.classList.toggle("sidebar-collapsed");
+
+    if (sidebar.classList.contains("collapsed")) {
+        localStorage.setItem("sidebarState", "collapsed");
+    } else {
+        localStorage.setItem("sidebarState", "expanded");
+    }
+}
+</script>
+<script>
+window.onload = function() {
+    const sidebar = document.querySelector(".sidebar");
+    const body = document.body;
+    const savedState = localStorage.getItem("sidebarState");
+
+    if (savedState === "collapsed") {
+        sidebar.classList.add("collapsed");
+        body.classList.add("sidebar-collapsed");
+    }
+};
 </script>
 </body>
 </html>

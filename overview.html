@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Assistant Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -19,13 +18,13 @@
         </div>
         <ul>
             <li>
-                <a href="index.html" class="active">
+                <a href="index.html">
                     <i class="fa-solid fa-house icon"></i>
                     <span class="text">Home</span>
                 </a>
             </li>
             <li>
-                <a href="overview.html">
+                <a href="overview.html" class="active">
                     <i class="fa-solid fa-chart-column icon"></i>
                     <span class="text">Overview</span>
                 </a>
@@ -70,60 +69,52 @@
     </nav>
 
     <main class="main-content">
-        <header class="hero">
-            <h1>Find Your Perfect Car</h1>
-            <p>Smart recommendations powered by your lifestyle, budget, and driving habits.</p>
+        <header>
+            <h1>Overview</h1>
+            <p>All car models introduced.</p>
         </header>
 
-        <section class="cta-section">
-            <h2>Start Your Journey</h2>
-            <p>Compare electric, hybrid, and fuel vehicles in seconds.</p>
-            <button class="primary-btn" onclick="window.location.href='select-input.html'">
-                Get Started →
-            </button>
-        </section>
+        <section class="intro-section">
+            <div class="overview-card">
+                <h2>Electric Vehicles (EV)</h2>
+                <p>Electric vehicles are powered entirely by electricity, offering zero emissions and lower running costs. They are ideal for city driving and environmentally conscious users seeking sustainable mobility.</p>
+            </div>
 
-        <section class="preview-section">
-            <h2>Popular Choices</h2>
-            <div class="car-cards">
-                <div class="car-card">
-                    <h3>Tesla Model 3</h3>
-                    <p>Electric • High Efficiency</p>
-                    <span>Match: 92%</span>
-                </div>
-                <div class="car-card">
-                    <h3>Toyota Prius</h3>
-                    <p>Hybrid • Reliable</p>
-                    <span>Match: 88%</span>
-                </div>
-                <div class="car-card">
-                    <h3>BYD Seal</h3>
-                    <p>Electric • Affordable</p>
-                    <span>Match: 90%</span>
-                </div>
+            <div class="overview-card">
+                <h2>Fuel Vehicles</h2>
+                <p>Traditional fuel-powered vehicles remain widely used due to their accessibility and long driving range. They are suitable for long-distance travel and areas with limited charging infrastructure.</p>
+            </div>
+
+            <div class="overview-card">
+                <h2>Hybrid Vehicles</h2>
+                <p>Hybrid vehicles combine a fuel engine with an electric motor, improving fuel efficiency while reducing emissions. They provide a balanced solution for users transitioning toward greener transportation.</p>
+            </div>
+
+            <div class="overview-card">
+                <h2>Plug-in Hybrid Vehicles (PHEV)</h2>
+                <p>Plug-in hybrids offer both electric-only driving and fuel backup. They can be charged externally and are ideal for users who want flexibility between electric commuting and long-distance travel.</p>
             </div>
         </section>
-        <section class="cover-section">
-            <h2>Explore Modern Driving</h2>
-            <p>Experience the future of mobility through innovation, efficiency, and intelligent design.</p>
-            <!-- Replace the src below with your own image link -->
-            <img src="images/Front Cover.png" alt="Car Cover Image" class="cover-image">
-        </section>
+        <div class="next-page-container">
+            <button class="next-page-btn" onclick="window.location.href='select-input.html'">
+                Next Page →
+            </button>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2026 Car Assistant Platform. All rights reserved.</p>
     </footer>
 
+</body>
 <script>
 function toggleSidebar() {
     const sidebar = document.querySelector(".sidebar");
     const body = document.body;
 
     sidebar.classList.toggle("collapsed");
-    body.classList.toggle("sidebar-collapsed"); 
+    body.classList.toggle("sidebar-collapsed");
 
-    // Save state
     if (sidebar.classList.contains("collapsed")) {
         localStorage.setItem("sidebarState", "collapsed");
     } else {
@@ -131,7 +122,6 @@ function toggleSidebar() {
     }
 }
 
-// Load saved state on page load
 window.onload = function() {
     const sidebar = document.querySelector(".sidebar");
     const body = document.body;
@@ -139,10 +129,8 @@ window.onload = function() {
 
     if (savedState === "collapsed") {
         sidebar.classList.add("collapsed");
-        body.classList.add("sidebar-collapsed"); 
+        body.classList.add("sidebar-collapsed");
     }
 };
 </script>
-
-</body>
 </html>
