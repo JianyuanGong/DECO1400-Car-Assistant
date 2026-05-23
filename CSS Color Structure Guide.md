@@ -49,6 +49,8 @@ button:hover {
     color: #ecf0f1;
 }
 
+---
+
 ## ⚪ Page Background & Cards
 
 ### Main page background
