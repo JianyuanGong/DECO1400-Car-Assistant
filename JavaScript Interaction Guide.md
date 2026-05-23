@@ -12,7 +12,7 @@ Used to notify users when input is incomplete or actions occur. \
 alert("Please complete all selections.");
 ```
 
-You can modify the message:
+You can modify the message: \
 (您可以修改消息：)
 ```js
 alert("Processing your request...");
@@ -22,7 +22,7 @@ alert("Processing your request...");
 
 ## 🖱️ Button Interaction (Click Events) (按钮交互)
 
-Basic interaction can be added using click events.
+Basic interaction can be added using click events. \
 (可以使用点击事件添加基本交互。)
 ```js
 document.querySelector("button").onclick = function() {
@@ -30,18 +30,21 @@ document.querySelector("button").onclick = function() {
 };
 ```
 
-This allows simple user interaction without complex logic.
+This allows simple user interaction without complex logic. \
+(这允许简单的用户交互，而不需要复杂的逻辑。)
 
 ---
 
 ## 🔄 Page Navigation (页面导航)
 
-Used to move users between pages.
+Used to move users between pages. \
+(用于在页面之间跳转用户。)
 ```js
 window.location.href = "select-result.html";
 ```
 
-You can change the destination page:
+You can change the destination page: \
+(您可以更改目标页面：)
 ```js
 window.location.href = "about.html";
 ```
@@ -50,25 +53,29 @@ window.location.href = "about.html";
 
 ## 💾 localStorage (Data Persistence) (本地存储)
 
-Stores user data across pages.
+Stores user data across pages. \
+(跨页面存储用户数据。)
 ```js
 localStorage.setItem("filterDone", "true");
 ```
 
-This is used to control user flow and ensure steps are completed.
+This is used to control user flow and ensure steps are completed. \
+(这是用来控制用户流程并确保步骤完成的。)
 
 ---
 
 ## 📊 Recommendation Logic (推荐逻辑)
 
-A simple rule-based system generates car recommendations.
+A simple rule-based system generates car recommendations. \
+(一个简单的基于规则的系统生成汽车推荐。)
 ```js
 if (usage === "Daily commute" && budget === "Above $60k") {
     // generate recommendations
 }
 ```
 
-This logic matches user input with predefined options.
+This logic matches user input with predefined options. \
+(此逻辑将用户输入与预定义选项相匹配。)
 
 ---
 
@@ -95,4 +102,9 @@ localStorage.setItem("sidebarState", "collapsed");
 You can demonstrate functionality by:
 * Changing alert messages
 * Adding a button interaction
-* Modifying page navigation
+* Modifying page navigation \
+
+您可以通过以下方式演示功能：
+*更改警报信息
+*添加按钮交互
+*修改页面导航
