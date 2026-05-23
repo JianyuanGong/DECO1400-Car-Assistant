@@ -16,9 +16,11 @@ Below is a breakdown of which sections control which colors.
 ```
 
 ### Primary button hover
+```
 .primary-btn:hover {
     background-color: #2980b9;
 }
+```
 
 ### All buttons (default)
 button {
