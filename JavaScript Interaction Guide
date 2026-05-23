@@ -7,12 +7,13 @@ This project uses JavaScript to handle user interaction, data storage, and page 
 ## 🔔 Alerts (User Feedback) (警报)
 
 Used to notify users when input is incomplete or actions occur.
-
+(用于在输入不完整或发生操作时通知用户。)
 ```js
 alert("Please complete all selections.");
 ```
 
 You can modify the message:
+(您可以修改消息：)
 ```js
 alert("Processing your request...");
 ```
@@ -22,6 +23,7 @@ alert("Processing your request...");
 ## 🖱️ Button Interaction (Click Events) (按钮交互)
 
 Basic interaction can be added using click events.
+(可以使用点击事件添加基本交互。)
 ```js
 document.querySelector("button").onclick = function() {
     alert("Button clicked");
