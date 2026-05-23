@@ -39,7 +39,7 @@ I use anchor links to navigate between pages. \
 
 ## 🔘 CTA Button（关键按钮）
 
-```HTML
+```html
 <button class="primary-btn" onclick="window.location.href='select-input.html'">
 ```
 
@@ -48,3 +48,86 @@ I use anchor links to navigate between pages. \
 * Redirects to input page \
     （跳转到输入页面）
 
+How to explain：
+This button redirects the user to the input page using JavaScript. \
+（该按钮通过JavaScript将用户跳转到输入页面。）
+
+---
+
+## 🎯 Sections Purpose（各部分作用）
+
+### Hero Section（标题区）
+
+* Introduces the system
+    （介绍系统功能）
+
+### CTA Section（引导区）
+
+* Encourages users to start
+    （引导用户开始使用）
+
+### Preview Section（预览区）
+
+* Shows example recommendations
+    （展示示例推荐）
+
+### Cover Section（图片区）
+
+* Enhances visual experience
+    （提升视觉体验）
+
+---
+
+## ⚙️ JavaScript (Sidebar)（侧边栏逻辑）
+
+```js
+function toggleSidebar()
+```
+
+* Toggles sidebar open/close
+    （控制侧边栏展开与收起）
+* Uses localStorage to remember state
+    （使用本地存储保存状态）
+
+```js
+localStorage.setItem("sidebarState", "collapsed");
+```
+
+How to explain：
+It stores the sidebar state so it persists after reload.
+（它会保存侧边栏状态，使刷新后仍然保持。）
+
+---
+
+## 🧪 Quick Modifications（现场修改）
+
+You can demonstrate: \
+（你可以演示以下操作：）
+
+### 1. Change text（改文字）
+```html
+<h1>Find Your Perfect Car</h1>
+```
+
+### 2. Add button（加按钮）
+```html
+<button>Test Button</button>
+```
+
+### 3. Add interaction（加交互）
+```js
+alert("Button clicked");
+```
+
+### 4. Change navigation（改跳转）
+```js
+window.location.href = "about.html";
+```
+
+---
+
+## ✅ Key Idea（核心理解）
+
+* HTML → structure（结构）
+* CSS → styling（样式）
+* JS → interaction（交互）
