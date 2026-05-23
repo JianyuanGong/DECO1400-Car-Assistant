@@ -2,6 +2,8 @@
 
 This project uses JavaScript to handle user interaction, data storage, and page navigation.
 
+---
+
 ## 🔔 Alerts (User Feedback) (警报)
 
 Used to notify users when input is incomplete or actions occur.
@@ -11,4 +13,84 @@ alert("Please complete all selections.");
 ```
 
 You can modify the message:
+```js
 alert("Processing your request...");
+```
+
+---
+
+## 🖱️ Button Interaction (Click Events) (按钮交互)
+
+Basic interaction can be added using click events.
+```js
+document.querySelector("button").onclick = function() {
+    alert("Button clicked");
+};
+```
+
+This allows simple user interaction without complex logic.
+
+---
+
+## 🔄 Page Navigation (页面导航)
+
+Used to move users between pages.
+```js
+window.location.href = "select-result.html";
+```
+
+You can change the destination page:
+```js
+window.location.href = "about.html";
+```
+
+---
+
+## 💾 localStorage (Data Persistence) (本地存储)
+
+Stores user data across pages.
+```js
+localStorage.setItem("filterDone", "true");
+```
+
+This is used to control user flow and ensure steps are completed.
+
+---
+
+## 📊 Recommendation Logic (推荐逻辑)
+
+A simple rule-based system generates car recommendations.
+```js
+if (usage === "Daily commute" && budget === "Above $60k") {
+    // generate recommendations
+}
+```
+
+This logic matches user input with predefined options.
+
+---
+
+## 📂 Sidebar State Management (边栏状态管理)
+
+Controls UI state and stores user preference.
+(控制用户界面状态并存储用户首选项。)
+```js
+function toggleSidebar() {
+    // toggle sidebar
+}
+```
+
+State is saved using:
+(使用以下方式保存状态：)
+```js
+localStorage.setItem("sidebarState", "collapsed");
+```
+
+---
+
+## ✅ Quick Testing (For Review)
+
+You can demonstrate functionality by:
+* Changing alert messages
+* Adding a button interaction
+* Modifying page navigation
