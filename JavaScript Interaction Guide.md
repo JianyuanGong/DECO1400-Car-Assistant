@@ -6,7 +6,7 @@ This project uses JavaScript to handle user interaction, data storage, and page 
 
 ## 🔔 Alerts (User Feedback) (警报)
 
-Used to notify users when input is incomplete or actions occur.
+Used to notify users when input is incomplete or actions occur. \
 (用于在输入不完整或发生操作时通知用户。)
 ```js
 alert("Please complete all selections.");
