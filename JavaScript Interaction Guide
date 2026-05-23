@@ -1,0 +1,14 @@
+# ⚙️ JavaScript Interaction Guide
+
+This project uses JavaScript to handle user interaction, data storage, and page navigation.
+
+## 🔔 Alerts (User Feedback) (警报)
+
+Used to notify users when input is incomplete or actions occur.
+
+```js
+alert("Please complete all selections.");
+```
+
+You can modify the message:
+alert("Processing your request...");
