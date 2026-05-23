@@ -7,7 +7,7 @@ Below is a breakdown of which sections control which colors.
 
 ## 🔵 Buttons
 
-- **Primary buttons (main actions)**
+### Primary buttons (main actions)
 
 ```css
 .primary-btn {
