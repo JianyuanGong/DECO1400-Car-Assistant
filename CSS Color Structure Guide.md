@@ -5,90 +5,110 @@ Below is a breakdown of which sections control which colors.
 
 ---
 
-## 🔵 Buttons
+## 🔵 Buttons （按钮）
 
-### Primary buttons (main actions)
-
+### Primary buttons (main actions) （主要按钮）
 ```css
 .primary-btn {
     background-color: #3498db;
 }
 ```
 
-### Primary button hover
-```
+### Primary button hover （主按钮悬停）
+```css
 .primary-btn:hover {
     background-color: #2980b9;
 }
 ```
 
-### All buttons (default)
+### All buttons (default) （所有按钮）
+```css
 button {
     background-color: #27ae60;
 }
+```
 
-### All buttons hover
+### All buttons hover （所有按钮悬停）
+```css
 button:hover {
     background-color: #2ecc71;
 }
+```
 
 ---
 
-## 🟫 Sidebar (Navigation)
+## 🟫 Sidebar (Navigation) （侧边栏）
 
-### Sidebar background
+### Sidebar background （侧边栏背景）
+```css
 .sidebar {
     background-color: #2c3e50;
 }
+```
 
-### Sidebar item hover
+### Sidebar item hover （侧边栏项目悬停）
+```css
 .sidebar ul li a:hover {
     background-color: #34495e;
 }
+```
 
-### Sidebar text color
+### Sidebar text color （侧边栏文字颜色）
+```css
 .sidebar ul li a {
     color: #ecf0f1;
 }
+```
 
 ---
 
-## ⚪ Page Background & Cards
+## ⚪ Page Background & Cards （页面背景和卡片）
 
-### Main page background
+### Main page background （主页背景）
+```css
 .main-content {
     background-color: #f4f7f6;
 }
+```
 
-### Content cards (sections)
+### Content cards (sections) （内容卡）
+```css
 .intro-section,
 .cta-section,
 .car-card {
     background: white;
 }
+```
 
 ---
 
-## ⚫ Text Colors
+## ⚫ Text Colors （文本颜色）
 
-### Main test
+### Main test （主测试）
+```css
 body {
     color: #222;
 }
+```
 
-### Paragraph text
+### Paragraph text （段落文本）
+```css
 p {
     color: #555;
 }
+```
 
-### Headings
+### Headings (标题）
+```css
 header h1 {
     color: #2c3e50;
 }
+```
 
 ---
 
-## 🔵 Floating / Next Button
+## 🔵 Floating / Next Button (浮动/下一步按钮)
+```css
 .next-page-btn {
     background-color: #3498db;
 }
@@ -96,13 +116,16 @@ header h1 {
 .next-page-btn:hover {
     background-color: #2980b9;
 }
+```
 
 ---
 
 ## 🖼️ Image Styling
+```css
 .cover-image {
     filter: brightness(0.7);
 }
+```
 
 ---
 
